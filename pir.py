@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import os
 
 # uses a PIR to detect motion. There's a good example of how this works at
 # https://learn.adafruit.com/pir-passive-infrared-proximity-motion-sensor/how-pirs-work
@@ -23,3 +24,5 @@ while True:
     if currState != prevState:
         newState = "Motion detected!" if currState else "All is quiet"
         print "GPIO pin %s is %s" % (sensorPin, newState)
+	# if currState:
+	#	os.system('fswebcam -r 320x240 -S 3 --jpeg 50 --save /home/pi/to_transmit/%H%M%S.jpg') # uses Fswebcam to take picture
