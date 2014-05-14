@@ -10,11 +10,11 @@ def blink(pin):
 
 # you can make reference to GPIO pins either using GPIO.BOARD (pin #)
 # or GPIO.BCM (logical mapping for the GPIO I/O pins as 'Broadcom SOC channel' )
-# We'll use physical pins for now
+# We'll use board for now
 GPIO.setmode(GPIO.BOARD)
-# pin 11 is going to be output, ie 
+# pin 11 is going to be output
 GPIO.setup(11, GPIO.OUT)
 # blink 10 times
-for i in range(0,5):
+for i in range(0,10):
 	blink(11)
 GPIO.cleanup()
