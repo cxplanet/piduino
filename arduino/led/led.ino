@@ -1,22 +1,26 @@
-int led = 12;
-int led2 = 13;
+int ledPin = 9;    // LED connected to digital pin 9
 
+void setup()  { 
+  // nothing happens in setup, but generally, we will
+  // usually open a serial connection, so that we can get 
+  // back logging info
+} 
 
-// the setup routine runs once when you press reset:
-void setup() {                
-  // initialize the digital pin as an output.
-  pinMode(led, OUTPUT); 
-pinMode(led2, OUTPUT);  
+void loop()  { 
+  // fade in from min to max in increments of 5 points:
+  for(int fadeValue = 0 ; fadeValue <= 255; fadeValue +=5) { 
+    // sets the value (range from 0 to 255):
+    analogWrite(ledPin, fadeValue);         
+    // wait for 30 milliseconds to see the dimming effect    
+    delay(30);                            
+  } 
+
+  // fade out from max to min in increments of 5 points:
+  for(int fadeValue = 255 ; fadeValue >= 0; fadeValue -=5) { 
+    // sets the value (range from 0 to 255):
+    analogWrite(ledPin, fadeValue);         
+    // wait for 30 milliseconds to see the dimming effect    
+    delay(30);                            
+  } 
 }
 
-// the loop routine runs over and over again forever:
-void loop() {
-  digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(10);               // wait for a second
-  digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
-  delay(30);  
-digitalWrite(led2, HIGH);  // wait for a seconddigitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(10);               // wait for a second
-  digitalWrite(led2, LOW);    // turn the LED off by making the voltage LOW
-  delay(30);
-}
