@@ -1,3 +1,12 @@
+/*
+Connect a HC-SR04. 
+
++5V from arduino goes to VCC, ground to ground, pingPin to Trig, 
+inPin to Echo
+
+LED wise, you are your own!
+*/
+
 //pin which triggers ultrasonic sound
 int pingPin = 13; 
 
@@ -20,7 +29,7 @@ void loop()
 {
   //raw duration in milliseconds, cm is the 
   //converted amount into a distance
-  long duration, cm, inches;
+  long duration, inches;
 
   //initializing the pin states
   pinMode(pingPin, OUTPUT);
@@ -40,21 +49,22 @@ void loop()
   duration = pulseIn(inPin, HIGH);
 
   // convert the time into a distance
-  cm = microsecondsToInches(duration);
+  inches = microsecondsToInches(duration);
   
   //printing the current readings to the serial display
-  Serial.print(cm * .393);
+  Serial.print(inches);
   Serial.print(" inches");
   Serial.println();
   
   //checking if anything is within the safezone, if not, keep 
   //green LED on if safezone violated, activate red LED instead
-  if (cm > safeZone)
+  if (inches < safeZone)
   {
-    digitalWrite(12, HIGH); //Establishes forward direction of Channel A
-    digitalWrite(9, LOW);   //Disengage the Brake for Channel A
-    analogWrite(3, 15);   //Spins the motor on Channel A at full speed
-    delay(200);
+    Serial.println("Too close!");
+  }
+  else
+  {
+    
   }
   
   delay(100);

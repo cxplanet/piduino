@@ -1,5 +1,5 @@
 /*
-A resistor (100K) and photoresistor are connected in series. +5V 
+A resistor (10K) and photoresistor are connected in series. +5V 
 goes to resistor, ground goes to photoresistor, the junction where 
 the resistor and photoresistor meets goes to analog 0. Digital 13 
 is used for the LED.
@@ -7,7 +7,7 @@ is used for the LED.
 
 
 int photoResistor = 0;  //define a pin for Photo resistor
-int threshold = 250;
+int threshold = 925;
 
 void setup(){
     Serial.begin(9600);  //Begin serial communcation
@@ -18,7 +18,7 @@ void setup(){
 void loop(){
     Serial.println(analogRead(photoResistor)); 
 
-   /*
+   
     if(analogRead(photoResistor) > threshold ){    
         digitalWrite(13, HIGH);
         Serial.println("high"); 
@@ -26,6 +26,6 @@ void loop(){
         digitalWrite(13, LOW);
         Serial.println("low"); 
     }
-    */
+    
     delay(500);
 }
