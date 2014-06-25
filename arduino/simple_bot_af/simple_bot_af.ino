@@ -28,24 +28,24 @@ void loop(){
 
   Serial.println(currDistance);
   
-  if (currDistance > safeDistance)
+  if (true)
   {
     moveForward(255);
   }
   else
   {
     backup(127, 1000);
-   // turnLeft(500);
+    turnLeft(500);
   }  
 }
 
 void moveForward(int motorSpeed)
 {
-  delay(250);
   motor1.run(FORWARD);
   motor2.run(FORWARD);
   motor1.setSpeed(motorSpeed);  
-  motor2.setSpeed(motorSpeed); 
+  motor2.setSpeed(motorSpeed);
+  delay(250);
   
 }
 
@@ -67,7 +67,7 @@ void backup(int motorSpeed, double timeMs)
   motor1.setSpeed(motorSpeed);  
   motor2.setSpeed(motorSpeed);  
 
- turnLeft(1500);
+  delay(timeMs);
 }
 
 void turnLeft(double timeMs)
