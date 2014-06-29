@@ -2,8 +2,8 @@
 
 AF_DCMotor motor1(1);
 AF_DCMotor motor2(2);
-int pingOut = 8; 
-int pingIn = 7;
+int pingOut = 19; 
+int pingIn = 18;
 long safeDistance = 8.0;
 
 void setup() {
@@ -28,7 +28,7 @@ void loop(){
 
   Serial.println(currDistance);
   
-  if (true)
+  if (currDistance > safeDistance)
   {
     moveForward(255);
   }
