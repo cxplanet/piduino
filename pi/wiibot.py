@@ -1,19 +1,3 @@
-'''
-########################################################################                                                                 
-# Program Name: simplebot_speed.py                                     
-# ================================     
-# This code is for moving the simplebot with speed control                                     
-# http://www.dexterindustries.com/                                                                
-# History
-# ------------------------------------------------
-# Author     Date      Comments
-# Karan      04/11/13  Initial Authoring
-#                                                                  
-# These files have been made available online through a Creative Commons Attribution-ShareAlike 3.0  license.
-# (http://creativecommons.org/licenses/by-sa/3.0/)           
-#
-########################################################################
-'''
 #Commands:
 #	w-Move forward
 #	a-Move left
@@ -26,54 +10,26 @@
 import cwiid   
 import time
 from BrickPi import *   #import BrickPi.py file to use BrickPi operations
-speed=200				#initial speed
-cmd='x'		
-motor1=PORT_B	# motor1 is on PORT_B
-motor2=PORT_C	# motor2 is on PORT_C				#last used command (used when increasing or decreasing speed)
 
-#Move Forward
+speed=200		#initial speed
+motor1=PORT_B	# motor1 is on PORT_B
+motor2=PORT_C	# motor2 is on PORT_C	
+
 def fwd():
 	BrickPi.MotorSpeed[motor1] = speed  
 	BrickPi.MotorSpeed[motor2] = speed  
-#Move Left
 def left():
 	BrickPi.MotorSpeed[motor1] = speed  
 	BrickPi.MotorSpeed[motor2] = -speed
-#Move Right
 def right():
 	BrickPi.MotorSpeed[motor1] = -speed  
 	BrickPi.MotorSpeed[motor2] = speed
-#Move backward
 def back():
 	BrickPi.MotorSpeed[motor1] = -speed  
 	BrickPi.MotorSpeed[motor2] = -speed
-#Stop
 def stop():
 	BrickPi.MotorSpeed[motor1] = 0  
 	BrickPi.MotorSpeed[motor2] = 0
-
-#Move the simplebot depending on the command
-def move_bot(val):
-	global cmd
-	if val=='w':
-		print 'forward'
-		cmd='w'
-		fwd()  
-	elif val=='a' :
-		print 'left'
-		cmd='a'
-		left()
-	elif val=='d':
-		print 'right'
-		cmd='d'
-		right()
-	elif val=='s':
-		print 'back'
-		cmd='s'
-		back()
-	elif val=='x':
-		print 'stop'
-		stop()
 
 def main():
 	#setup wii
