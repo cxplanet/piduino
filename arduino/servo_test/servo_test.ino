@@ -1,30 +1,26 @@
-#include <AFMotor.h>
-
-// Connect a stepper motor with 200 steps per revolution (1.8 degree)
-// to motor port #2 (M3 and M4)
-AF_Stepper motor(200, 2);
-
-void setup() {
-  Serial.begin(9600);           // set up Serial library at 9600 bps
-  Serial.println("Stepper test!");
-
-  motor.setSpeed(10);  // 10 rpm   
-}
-
-void loop() {
-  Serial.println("Single coil steps");
-  motor.step(100, FORWARD, SINGLE); 
-  motor.step(100, BACKWARD, SINGLE); 
-
-  Serial.println("Double coil steps");
-  motor.step(100, FORWARD, DOUBLE); 
-  motor.step(100, BACKWARD, DOUBLE);
-
-  Serial.println("Interleave coil steps");
-  motor.step(100, FORWARD, INTERLEAVE); 
-  motor.step(100, BACKWARD, INTERLEAVE); 
-
-  Serial.println("Micrsostep steps");
-  motor.step(100, FORWARD, MICROSTEP); 
-  motor.step(100, BACKWARD, MICROSTEP); 
+#include <Servo.h> 
+ 
+Servo myservo;  // create servo object to control a servo 
+                // a maximum of eight servo objects can be created 
+ 
+int pos = 0;    // variable to store the servo position 
+ 
+void setup() 
+{ 
+  myservo.attach(9);  // attaches the servo on pin 9 to the servo object 
+} 
+ 
+ 
+void loop() 
+{ 
+  for(pos = 0; pos < 180; pos += 1)  // goes from 0 degrees to 180 degrees 
+  {                                  // in steps of 1 degree 
+    myservo.write(pos);              // tell servo to go to position in variable 'pos' 
+    delay(15);                       // waits 15ms for the servo to reach the position 
+  } 
+  for(pos = 180; pos>=1; pos-=1)     // goes from 180 degrees to 0 degrees 
+  {                                
+    myservo.write(pos);              // tell servo to go to position in variable 'pos' 
+    delay(15);                       // waits 15ms for the servo to reach the position 
+  } 
 }
