@@ -4,9 +4,9 @@
  // pin assignments
  int photoResistor = 0;
  //set this to your darkness threshold
- int darkness = 150;
+ int darkness = 50;
  // set this to your 'full light' threshold
- int light = 950;
+ int light = 650;
  Servo servo;
  int val;
  
